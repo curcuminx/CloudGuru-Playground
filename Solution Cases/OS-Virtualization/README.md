@@ -1,4 +1,4 @@
-# BREAKY-BREAKY CLOUDGURU PLAYGROUND
+# BREAKY-BREAKY K8s PLAYGROUND
 
 follow these guidelines, don't give yourself a headache yet:
 1. Go to CloudGuru, set up 2  Ubuntu 20.01 machines (4 units each, better safe than sorry). 
