@@ -1,0 +1,36 @@
+---
+description: Bunch of stuff being thrown at innocent random nodes
+
+# Saved for later if needed:
+#parameters:
+#    first_contact:
+#      default: ''
+#      type: String
+#    cont_pri_ip:
+#      default: ''
+#      type: String
+
+steps:
+  - script: plg_kube_hdfs/cloud_guru_init_contact.exp
+    name: cloud_guru_first_contact
+    description: "Setting up/re-initiates contact with cloud guru, sets up passwords and exits"
+    targets:
+      - localhost
+  - plan: plg_kube_hdfs::k8s::k8s_deploy
+    name: plg_k8s_deploy
+    description: "Setting up k8s"
+  - script: plg_kube_hdfs/tunnel_k8s_dashboard.exp
+    name: tunnel_k8s_dashboard
+    description: "Setting up tunnel from controller's kube-proxy to localhost:8080"
+    targets:
+      - localhost
+  - command: ps aux | grep "ssh -fN" | grep -v color
+    name: grep_ps_ssh
+    description: "making sure the tunnel's up"
+    targets:
+      - localhost
+  - message:
+      - $grep_ps_ssh
+
+return: $plg_k8s_deploy
+

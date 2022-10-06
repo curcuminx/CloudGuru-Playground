@@ -1,0 +1,8 @@
+ubernetes::docker_version: 5:20.10.11~3-0~ubuntu-focal
+kubernetes::docker_package_name: docker-ce
+kubernetes::etcd_hostname: "%{facts.cont_hostname}"
+kubernetes::dashboard_version: "2.5.1"
+#kubernetes::kube_api_bind_port: 8080
+#kubernetes::cloud_provider: aws
+#kubernetes::docker_apt_release: focal
+#kubernetes::docker_apt_repos: stable

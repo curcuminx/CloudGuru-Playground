@@ -1,0 +1,22 @@
+---
+description: Hopefully install and configure K8s
+
+steps:
+  - script: plg_kube_hdfs/render_env_templ.sh
+    name: render_env
+    description: "Renders ./files/env"
+    targets:
+      - localhost
+  - command: docker run --rm -v "$(pwd)/data:/mnt" --env-file ./files/k8s-env puppet/kubetool:6.2.0
+    name: k8s_install
+    description: "Setting up cluster config"
+    targets:
+      - localhost
+  - resources:
+      - class: plg_kube_hdfs
+    name: k8s_res
+    description: "Hopefully deploying K8s cluster"
+    targets:
+      - cloud_guru
+
+return: $k8s_res

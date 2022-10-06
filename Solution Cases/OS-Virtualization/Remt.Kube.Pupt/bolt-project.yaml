@@ -1,0 +1,8 @@
+---
+name: plg_kube_hdfs
+modules:
+- git: https://github.com/puppetlabs/puppetlabs-kubernetes
+  ref: main
+- puppetlabs/apache
+- jethrocarr/hostname
+- saz/ssh

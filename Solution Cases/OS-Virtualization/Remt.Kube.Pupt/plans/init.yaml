@@ -1,0 +1,9 @@
+---
+description: Setting up Playground
+
+steps:
+  - plan: plg_kube_hdfs::main_plan
+    name: main_plan
+    description: "Starting up main plan"
+
+return: $main_plan

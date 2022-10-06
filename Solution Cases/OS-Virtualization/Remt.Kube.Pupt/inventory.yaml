@@ -1,0 +1,62 @@
+# This is an example inventory.yaml
+# To read more about inventory files, see https://pup.pt/bolt-inventory
+##
+
+# Oppurs:
+# - might want to put all of these envs in a single object.
+groups:
+  - name: cloud_guru
+    targets:
+      - name: plg_controller
+        uri:
+          _plugin: env_var
+          var: cont_pub_ip
+          default: ''
+        facts:
+          cont_hostname:
+            _plugin: env_var
+            var: cont_hostname
+            default: ''
+          opt_cont_hostname:
+            _plugin: env_var
+            var: opt_cont_hostname
+            default: ''
+          most_secure_pass:
+            _plugin: env_var
+            var: most_secure_pass
+            default: ''
+      - name: plg_worker
+        uri:
+          _plugin: env_var
+          var: work_pub_ip
+          default: ''
+        facts:
+          cont_hostname:
+            _plugin: env_var
+            var: work_hostname
+            default: ''
+          opt_cont_hostname:
+            _plugin: env_var
+            var: opt_work_hostname
+            default: ''
+
+    config:
+      transport: ssh
+      ssh:
+        host-key-check: false
+        ssl: false
+        user: cloud_user
+        password: mostsecurepasswordinthewholewideworld
+        run-as: root
+        sudo-executable: sudo
+        sudo-password: mostsecurepasswordinthewholewideworld
+
+#  - name: localhost
+#    targets:
+#      - 127.0.0.1
+#    config:
+#      transport: local
+#      run-as: hai
+
+#  cleanup: false
+#      tmpdir: "/tmp/bolt"

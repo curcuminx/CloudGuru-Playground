@@ -1,0 +1,21 @@
+# This Puppetfile is managed by Bolt. Do not edit.
+# For more information, see https://pup.pt/bolt-modules
+
+# The following directive installs modules to the managed moduledir.
+moduledir '.modules'
+
+mod 'saz/ssh', '9.0.0'
+mod 'jethrocarr/hostname', '1.0.3'
+mod 'puppetlabs/apache', '7.0.0'
+mod 'kubernetes',
+  git: 'https://github.com/puppetlabs/puppetlabs-kubernetes',
+  ref: 'a740662d0696fdfc56f7ddd395193ea2648fa010'
+mod 'puppetlabs/stdlib', '8.1.0'
+mod 'puppetlabs/concat', '7.1.1'
+mod 'puppet/systemd', '3.8.0'
+mod 'puppetlabs/apt', '8.3.0'
+mod 'puppet/archive', '6.0.2'
+mod 'herculesteam/augeasproviders_sysctl', '2.6.2'
+mod 'herculesteam/augeasproviders_core', '3.1.0'
+mod 'puppet/kmod', '3.1.1'
+mod 'puppetlabs/inifile', '5.2.0'

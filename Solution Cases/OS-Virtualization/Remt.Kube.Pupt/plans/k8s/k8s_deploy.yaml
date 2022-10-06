@@ -1,0 +1,13 @@
+---
+description: Main deploy plan, contain installation and setup
+
+steps:
+  - plan: plg_kube_hdfs::k8s::k8s_install
+    name: k8s_install
+    description: "installing k8s"
+  - plan: plg_kube_hdfs::k8s::k8s_setup
+    name: k8s_setup
+    description: "Setting k8s: user-auth; starting kube-proxy (uses installed kubeadm tool)"
+
+return: $k8s_setup
+

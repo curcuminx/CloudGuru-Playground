@@ -1,0 +1,10 @@
+OS=ubuntu
+VERSION=1.23.5
+CONTAINER_RUNTIME=docker
+CNI_PROVIDER=weave
+#CNI_PROVIDER_VERSION=1.4.3
+ETCD_INITIAL_CLUSTER=cont_hostname:cont_pri_ip
+ETCD_IP="%{networking.ip}"
+KUBE_API_ADVERTISE_ADDRESS="%{networking.ip}"
+#BOOTSTRAP_CONTROLLER_IP=%{networking.ip}"
+INSTALL_DASHBOARD=true

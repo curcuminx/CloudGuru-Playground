@@ -1,1 +1,0 @@
-# CloudGuru Playground

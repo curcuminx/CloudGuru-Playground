@@ -1,0 +1,10 @@
+#!/usr/bin/expect -f
+
+global env
+
+spawn -ignore HUP ssh -fN -o ServerAliveCountMax=20 -o ServerAliveInterval=15 -L 6443:$env(cont_pri_ip):8080 cloud_user@$env(cont_pub_ip)
+expect "Password:*"
+send $env(most_secure_pass)\r;
+
+expect_background
+exit

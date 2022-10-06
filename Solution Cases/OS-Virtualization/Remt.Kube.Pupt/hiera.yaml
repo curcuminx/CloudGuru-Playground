@@ -1,0 +1,15 @@
+version: 5
+defaults:  # Used for any hierarchy level that omits these keys.
+  datadir: 'data'
+  data_hash: 'yaml_data'
+
+#hierarchy:
+
+hierarchy:
+  - name: "Family"
+    path: Ubuntu.yaml
+  - name: "Controller data"
+    path: "%{facts.cont_hostname}.yaml"
+  - name: "Common data"
+    path: common.yaml
+    # take note of retarded interpolation error when note using quotes ""

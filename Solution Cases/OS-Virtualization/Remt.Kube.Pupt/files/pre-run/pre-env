@@ -1,0 +1,19 @@
+
+#contents: cont work
+first_contact="cont work"
+domain=plg
+
+cont_int_pass=AWWC4565ukja
+cont_pub_ip=54.164.104.59
+cont_pri_ip=172.31.120.213
+cont_hostname=4c548e8c10a442b7a67325c4b0d3f4491c.mylabserver.com
+opt_cont_hostname="kube-controller.${domain}"
+
+work_int_pass=WGMU8783mlxv
+work_pub_ip=3.85.25.55
+work_pri_ip=172.31.115.6
+work_hostname=4c548e8c10a442b7a67325c4b0d3f4492c.mylabserver.com
+opt_work_hostname="kube-worker.${domain}"
+
+most_secure_pass=mostsecurepasswordinthewholewideworld
+

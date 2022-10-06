@@ -1,0 +1,36 @@
+---
+description: k8s post-installation setup
+
+steps:
+  - task: plg_kube_hdfs::k8s_kube_proxy
+    name: k8s_kube_proxy
+    description: "Setting up dashboard access using kube-proxy"
+    targets:
+      - plg_controller
+  - task: plg_kube_hdfs::k8s_setup_cluster_admin
+    name: kubeadm_user_setup
+    description: "Setting up cluster-admin password etc."
+    targets:
+      - plg_controller
+  - task: plg_kube_hdfs::k8s_setup_dashboard
+    name: k8s_setup_dashboard
+    description: "Setting up the k8s dashboard"
+    targets:
+      - plg_controller
+  - task: plg_kube_hdfs::k8s_get_secrets
+    name: k8s_get_secrets
+    description: "Gets authentication secret tokens for remote k8s dashboard"
+    targets:
+      - plg_controller
+  - command: 'echo $k8s_get_secrets > ./files/k8s_secrets'
+    name: k8s_spillout_secrets
+    description: "spills out k8s secrets"
+    targets:
+      - localhost
+    env_vars:
+       k8s_get_secrets: $k8s_get_secrets
+  - message: $k8s_get_secrets
+  - message: "BREAKY-BREAKY: \
+              http://localhost:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/"
+
+#return: $k8s_get_secrets

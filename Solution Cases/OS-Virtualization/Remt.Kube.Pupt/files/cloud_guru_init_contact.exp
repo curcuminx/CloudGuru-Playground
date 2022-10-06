@@ -1,0 +1,27 @@
+#!/usr/bin/expect -f
+
+global env
+
+set first_contact $env(first_contact);
+
+foreach prefix $first_contact {
+  spawn ssh cloud_user@$env(${prefix}_pub_ip)
+
+  expect {
+    "Are you sure *" { send yes\r; exp_continue }
+    "Password:*" { send $env(${prefix}_int_pass)\r; exp_continue }
+    "Current password:*" { send $env(${prefix}_int_pass)\r; exp_continue }
+    "New password:*" { send $env(most_secure_pass)\r; exp_continue }
+    "Retype new password:*" {send $env(most_secure_pass)\r; exp_continue }
+  }
+
+  send "exit\r"
+}
+
+# previous approach:
+# ========================
+#sshpass -p $WORK_INIT_PASS ssh "cloud_user@$WORK_PUB_IP" <<'ENDSSH'
+#                                echo $WORK_INIT_PASS
+#                                echo $MOST_SECURE_PASS
+#                                echo $MOST_SECURE_PASS
+#ENDSSH
