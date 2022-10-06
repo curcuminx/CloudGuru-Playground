@@ -20,5 +20,5 @@ follow these guidelines, don't give yourself a headache yet:
 Security Note:
 - do not share anything from:
   - ./files/pre-run/pre-env
-  - /files/k8s_secrets
+  - ./files/k8s_secrets
   - ./data/*
