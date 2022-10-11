@@ -1,4 +1,4 @@
-files/admin.conf
+files/k8s-resources/admin.conf
 files/k8s_secrets
 .modules/
 .resource_types/
