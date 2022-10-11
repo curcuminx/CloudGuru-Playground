@@ -1,3 +1,5 @@
+file/admin.conf
+file/k8s_secrets
 .modules/
 .resource_types/
 bolt-debug.log

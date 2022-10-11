@@ -1,9 +1,13 @@
 # BREAKY-BREAKY K8s PLAYGROUND
 
+dependecies:
+- Puppet Bolt
+- ExpectShell
+
 follow these guidelines, don't give yourself a headache yet:
 1. Go to CloudGuru, set up 2  Ubuntu 20.01 machines (4 units each, better safe than sorry). 
    1. if you feel like going with other distros - go ahead, make sure to refer "./hiera.yaml" and "./data/common.yaml"
-2. what goes into "./files/pre-run/pre-env":
+2. what goes into "./files/pre-run/pre-env" and "./files/k8s-env":
    1. connection creds
    2. priv+pub IPs
    3. machines hostnames put them in:
